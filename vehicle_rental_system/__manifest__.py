@@ -1,0 +1,43 @@
+{
+    'name': 'vehicle Rental System',
+    'version': '17.0.1.0.0',
+    'category': 'Services',
+    'summary': 'Vehicle Rental System for Odoo simplifies and automates the entire vehicle rental process, from booking and contract management to invoicing and payment tracking. Ideal for car rental agencies and fleet managers, this module enhances efficiency and transparency in rental operations.',
+    "description": """
+    Vehicle Rental System for Odoo is a comprehensive solution designed to streamline and automate the vehicle rental process. This module allows businesses to efficiently manage vehicle bookings, availability, customer details, rental contracts, and payment tracking—all from within the Odoo platform. It simplifies the entire workflow from vehicle selection, reservation management, to invoicing, ensuring a seamless rental experience for both the business and the customer.
+    """,
+    "author": "yashsuvta1236@gmail.com",
+    "maintainer": "yashsuvta1236@gmail.com, nitinupmanyu12@gmail.com",
+    "company" : "",
+    "contributor": "Yash Suvta, Mayur Kukreja, Nitin Upmanyu",
+    'website': '',
+    "support": "yashsuvta1236@gmail.com, nitinupmanyu12@gmail.com",
+    'depends': ['base','mail', 'web'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/vehicle_rental.xml',
+        'views/res_partner.xml',
+        'views/vehicle_rental_contract.xml',
+        'views/vehicle_rental_menu.xml', 
+        'views/dynamic_block_views.xml',
+    ],
+    "assets": {
+        'web.assets_backend': [
+            'vehicle_rental_system/static/src/css/dynamic_dashboard.css',
+            'vehicle_rental_system/static/src/scss/dynamic_dashboard.scss',
+            'vehicle_rental_system/static/src/xml/dynamic_dashboard_template.xml',
+            'vehicle_rental_system/static/src/xml/order_stats_tile.xml',
+            'vehicle_rental_system/static/src/js/dynamic_dashboard_tile.js',
+            'vehicle_rental_system/static/src/js/dynamic_dashboard_chart.js',
+            'vehicle_rental_system/static/src/js/order_stats_tile.js', 
+            'vehicle_rental_system/static/src/js/dynamic_dashboard.js',    
+        ],
+    },
+    'installable': True,
+    'application': False,
+    "license": "OPL-1",
+    "auto_install": False,
+    "price": 69.00,
+    "currency": "USD",
+    'images': ['static/description/vehicle_rental_banner.png'],
+}
