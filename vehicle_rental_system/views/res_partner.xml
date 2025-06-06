@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_customer_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//group//group" position="inside">
+                <field name="isdriver" string="Is Driver"/>
+                <field name="status" string="Status" invisible = "isdriver == False"/>
+            </xpath>
+        </field>
+    </record>
+
+
+        <record id="view_partner_kanban_inherit" model="ir.ui.view">
+            <field name="name">res.partner.kanban.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+               <xpath expr="//aside[contains(@class, 'o_kanban_aside_full')]" position="before">
+                    <field name="status" invisible="1"/>
+                    <field name="isdriver" invisible="1"/>
+                    <!-- Available: Show when isdriver=True AND status=True -->
+                    <widget name="web_ribbon" title="Engaged" bg_color="text-bg-danger" 
+                            invisible="not isdriver or not status"/>
+                    <!-- Engaged: Show when isdriver=True AND status=False -->
+                    <widget name="web_ribbon" title="Available" bg_color="text-bg-success" 
+                            invisible="not isdriver or status"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    <record id="action_customer_tree" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('isdriver', '=', False)]</field>
+    </record>
+
+
+    <record id="action_customer_isdriver" model="ir.actions.act_window">
+    <field name="name">Drivers</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">kanban,form,list</field>
+    <field name="domain">[('isdriver', '=', True)]</field>
+    </record>
+
+</odoo>
