@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_car_rental_contract" model="ir.ui.view">
+    <field name="name">vehicle Rental Contract Form</field>
+    <field name="model">vehicle.rental.contract</field>
+    <field name="arch" type="xml">
+    
+        <form string="vehicle Rental Contract"> 
+            <header>
+                <field name="state" widget="statusbar" statusbar_visible="draft,send contract ,confirmation,done"/>
+
+                <button name="action_send_contract" string="send contract" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+
+                <button name="action_process" string="confirmation" type="object"
+                        class="oe_highlight" invisible="state != 'send contract'"/>
+                
+                <button name="action_done" string="Done" type="object"
+                        class="oe_highlight" invisible="state != 'confirmation'"/>
+            </header>
+             
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button type="object" name="action_view_invoices" class="oe_stat_button" icon="fa-pencil-square-o" invisible="state != 'done'">
+                        <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                    </button>
+                </div> 
+                <group>
+                <group>
+                    <field name="customer"/>
+                    <field name="vehicle_ids"/>
+                    <field name="driver"/>
+                    <field name="address"/>
+                </group>
+                <group>
+                    <field name="pickup_date"/>
+                    <field name="drop_date"/>
+                    <field name="total_days"/>
+                </group>
+            </group>
+
+            <group string="Pricing Summary" col="4">
+                <field name="deposit" widget="monetary"/>
+                <field name="total_amount" widget="monetary" readonly="1"/>
+                <field name="remaining_amount" widget="monetary" readonly="1"/>
+            </group>
+
+                <notebook>
+                <page string="Vehicle Details" >
+                        <field name="car_rental_lines" >
+                            <list>
+                                <field name="vehicle_id" domain="[('car_status', '=', 'available')]"/>
+                                <field name="last_reading" readonly="1"  editable="0" />
+                                <field name="current_reading" required="1"  editable="1"/>
+                                <field name="payable_reading" readonly="1"  editable="0"/>
+                                <field name="rent_uom" readonly="1" editable="0"/>
+                                <field name="rent_price" widget="monetary" readonly="1"  editable="0"/>
+                                <field name="tax" widget="monetary"  editable="0"/>
+                                <field name="total_amount" widget="monetary" readonly="1"/>
+                            </list>
+                        </field>
+                </page>
+            </notebook>
+            </sheet>
+           <chatter/>
+        </form>
+    </field>
+</record>
+
+    <record id="view_vehicle_contract_kanban" model="ir.ui.view">
+    <field name="name">vehicle.rental.contract.kanban</field>
+    <field name="model">vehicle.rental.contract</field>
+    <field name="arch" type="xml">
+         <kanban default_group_by="state" class="o_kanban_view">
+            <field name="state"/>
+            <grouped by="state"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_card oe_kanban_global_click">
+                        <div class="oe_kanban_details">
+                            <strong>
+                                    <field name="customer"/>
+                                </strong>
+                            <br/>
+                             <div class="oe_kanban_metadata">
+                                    <field name="vehicle_ids"/>
+                                    <field name="pickup_date"/>
+                                    <field name="drop_date"/>
+                                </div>
+
+                                 <div class="oe_kanban_footer">
+                                    <field name="state"/>
+                                </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+
+<record id="view_car_rental_contract_tree" model="ir.ui.view">
+        <field name="name">vehicle.rental.contract.tree</field>
+        <field name="model">vehicle.rental.contract</field>
+        <field name="arch" type="xml">
+            <list string="vehicle Rental Contracts">
+                <field name="customer"/>
+                <field name="vehicle_ids"/>
+                <field name="pickup_date"/>
+                <field name="drop_date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_car_rental_contract" model="ir.actions.act_window">
+        <field name="name">vehicle Rental Contract Form</field>
+        <field name="res_model">vehicle.rental.contract</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="view_id" ref="view_vehicle_contract_kanban"/>
+    </record>
+</odoo>
