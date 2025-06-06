@@ -37,7 +37,7 @@
     'application': False,
     "license": "OPL-1",
     "auto_install": False,
-    "price": 0.5,
-    "currency": "USD",
+    "price": 1,
+    "currency": "INR",
     'images': ['static/description/vehicle_rental_banner.png'],
 }
