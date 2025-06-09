@@ -77,9 +77,8 @@
     <field name="name">vehicle.kanban</field>
     <field name="model">vehicle.rental</field>
     <field name="arch" type="xml">
-         <kanban default_group_by="car_status" class="o_kanban_view">
+         <kanban class="o_kanban_view">
             <field name="car_status"/>
-            <grouped by="car_status"/>
             <progressbar field="car_status" colors='{"available": "success", "maintenance": "warning", "rented": "danger", "booked": "info", "sold": "purple"}'/>
             <templates>
                 <t t-name="kanban-box">

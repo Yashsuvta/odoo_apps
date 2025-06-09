@@ -6,12 +6,12 @@
      "description": """
     Vehicle Rental System for Odoo is a comprehensive solution designed to streamline and automate the vehicle rental process. This module allows businesses to efficiently manage vehicle bookings, availability, customer details, rental contracts, and payment tracking—all from within the Odoo platform. It simplifies the entire workflow from vehicle selection, reservation management, to invoicing, ensuring a seamless rental experience for both the business and the customer.
     """,
-    "author": "yashsuvta1236@gmail.com",
+    "author": "Codefusion Odooworks",
     "maintainer": "yashsuvta1236@gmail.com, nitinupmanyu12@gmail.com",
-    "company" : "",
-    "contributor": "Yash Suvta, Nitin Upmanyu",
-    'website': '',
-    "support": "yashsuvta1236@gmail.com, nitinupmanyu12@gmail.com",
+    "company" : "https://codefusion-odooworks.odoo.com",
+    "contributor": "Yash Suvta, Mayur Kukreja, Nitin Upmanyu",
+    'website': 'https://codefusion-odooworks.odoo.com',
+    "support": "https://codefusion-odooworks.odoo.com/contactus",
     'depends': ['base','mail', 'web','account'],
     'data': [
         'security/ir.model.access.csv',
