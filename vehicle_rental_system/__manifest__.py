@@ -12,7 +12,7 @@
     "contributor": "Yash Suvta, Nitin Upmanyu",
     'website': '',
     "support": "yashsuvta1236@gmail.com, nitinupmanyu12@gmail.com",
-    'depends': ['base','mail', 'web'],
+    'depends': ['base','mail', 'web','account'],
     'data': [
         'security/ir.model.access.csv',
         'views/vehicle_rental.xml',
