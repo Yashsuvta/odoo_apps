@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_users_form_debug_mode" model="ir.ui.view">
+        <field name="name">res.users.form.debug.mode</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='active']" position="after">
+                <field name="always_debug_mode"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

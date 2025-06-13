@@ -1,5 +1,5 @@
 ===================
-Odoo 17 Remove Data
+Odoo Data Cleaner
 ===================
 
 This Module will help to remove transactional data from database
@@ -36,11 +36,10 @@ Credits
 Contributors
 ------------
 
-* Odoo Mates <odoomates@gmail.com>
-* Sunpop.cn
+* Odoo Mates <yashsuvta1236@gmail.com>
 
 
 Author & Maintainer
 -------------------
 
-This module is maintained by the Odoo Mates
+This module is maintained by the CodeFusion Odoworks
