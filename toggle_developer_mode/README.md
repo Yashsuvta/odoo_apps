@@ -1,8 +1,8 @@
-===================
-Odoo Data Cleaner
-===================
+======================
+Toggle Developer Mode
+======================
 
-This Module will help to remove transactional data from database
+Effortlessly toggle Odoo debug mode directly from the top-right Navbar. Simplify development and troubleshooting with a single click.
 
 Installation
 ============
@@ -42,4 +42,4 @@ Contributors
 Author & Maintainer
 -------------------
 
-This module is maintained by the CodeFusion Odooworks
+This module is maintained by the CodeFusion Odoworks

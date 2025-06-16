@@ -92,3 +92,8 @@ Support
 ================================================================
 
 `yashsuvta1236@gmail.com,nitinupmanyu12@gmail.com`_
+
+Author & Maintainer
+-------------------
+
+This module is maintained by the CodeFusion Odooworks
