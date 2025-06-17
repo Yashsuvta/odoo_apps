@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherited_kanban_view_project" model="ir.ui.view">
+        <field name="name">inherited.kanban.view.project.task</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+            <kanban position="inside">
+                <field name="is_done_stage"/>
+                <field name="user_timer_start"/>
+                <field name="has_active_timer"/>
+            </kanban>
+            <xpath expr="//footer" position="inside">
+                <div class="d-flex justify-content-between mt-2" style="align-items: center;">
+                    <t t-if="record.has_active_timer.raw_value">
+                        <div t-attf-id="timer-#{record.res_id}" 
+                            class="text-primary fw-bold Livetimerviwer" 
+                            style="margin-right: 10px;">
+                        </div>
+                    </t>
+                    <button name="start_timer"
+                            type="object"
+                            title="Start Timer"
+                            class="btn btn-sm btn-outline-primary"
+                            style="margin-right: 5px;"
+                            invisible="has_active_timer or is_done_stage">
+                        <i class="fa fa-play"/>
+                    </button>
+                    <button name="stop_timer"
+                            type="object"
+                            title="Stop Timer"
+                            class="btn btn-sm btn-outline-danger"
+                            invisible="not has_active_timer or is_done_stage">
+                        <i class="fa fa-stop"/>
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
