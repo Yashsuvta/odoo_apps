@@ -42,7 +42,7 @@ class ExportData(http.Controller):
                     'type': groupby_type, 'other': group_by}
         else:
             export_data = records.export_data(field_names).get('datas', [])
-            pdf_report = request.env.ref('advanced_list_view.ir_exports_pdf_report')
+            pdf_report = request.env.ref('odoo_advanced_list_view.ir_exports_pdf_report')
             if pdf_report:
                 pdf_report.name = Model._description
             return {'data': export_data,'filename':Model._description, 'header': columns_headers}

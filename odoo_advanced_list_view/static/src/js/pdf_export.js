@@ -62,7 +62,7 @@ export class ExportPdf extends Component {
                             var action = {
                                 'type': 'ir.actions.report',
                                 'report_type': 'qweb-pdf',
-                                'report_name':'advanced_list_view.export_in_pdf_group_by',
+                                'report_name':'odoo_advanced_list_view.export_in_pdf_group_by',
                                 'data':{'length':length_field,'group_len':[0,1,2,3],'record':data,}
                             };
                         }
@@ -70,7 +70,7 @@ export class ExportPdf extends Component {
                             var action = {
                                 'type': 'ir.actions.report',
                                 'report_type': 'qweb-pdf',
-                                'report_name':'advanced_list_view.export_in_pdf',
+                                'report_name':'odoo_advanced_list_view.export_in_pdf',
                                 'data':{'length':length_field,'record':data}
                             };
                         }

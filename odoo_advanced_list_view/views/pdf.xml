@@ -42,7 +42,7 @@
 			qweb-pdf
 		</field>
 		<field name="report_name">
-			advanced_list_view.export_in_pdf
+			odoo_advanced_list_view.export_in_pdf
 		</field>
 		<field name="binding_type">
 			report

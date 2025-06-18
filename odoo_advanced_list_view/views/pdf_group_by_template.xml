@@ -10,7 +10,7 @@
 			qweb-pdf
 		</field>
 		<field name="report_name">
-			advanced_list_view.export_in_pdf_group_by
+			odoo_advanced_list_view.export_in_pdf_group_by
 		</field>
 	</record>
 	<template id="export_in_pdf_group_by">

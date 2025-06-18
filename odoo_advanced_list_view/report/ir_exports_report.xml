@@ -5,7 +5,7 @@
         <field name="name">Export</field>
         <field name="model">ir.exports</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">advanced_list_view.export_in_pdf</field>
+        <field name="report_name">odoo_advanced_list_view.export_in_pdf</field>
         <field name="print_report_name">(object.name)</field>
         <field name="binding_type">report</field>
         <field name="paperformat_id" ref="paperformat_export"/>
@@ -15,6 +15,6 @@
         <field name="name">Export</field>
         <field name="model">ir.exports</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">advanced_list_view.export_in_pdf_group_by</field>
+        <field name="report_name">odoo_advanced_list_view.export_in_pdf_group_by</field>
     </record>
 </odoo>
