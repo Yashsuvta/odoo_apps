@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+	<t t-name="dynamic_filters" id="custom_listrenderer" t-inherit="web.ListRenderer" t-inherit-mode="extension" owl="1">
+		<xpath expr="//table/thead" position="inside">
+			<tr>
+				<th/>
+				<t t-foreach="state.columns" t-as="column" t-key="column.id">
+					<t t-set="field" t-value="column.field"/>
+					<th class="filter_view">
+						<t t-if="field">
+							<t t-set="component" t-value="field.component"/>
+							<t t-if="component">
+								<t t-log="component"/>
+								<t t-if="component.name === 'BadgeField'">
+									<select class="o_input" t-on-change="ev => this.onValueChange(column,ev)">
+										<t t-foreach="options_field" t-as="field" t-key="field_index">
+											<t t-if="field.name === column.name">
+												<t t-foreach="field.selection" t-as="option" t-key="option_index">
+													<option t-att-value="option[0]" t-esc="option[1]"/>
+												</t>
+											</t>
+										</t>
+									</select>
+								</t>
+								<t t-elif="component.name === 'RemainingDaysField'">
+									<input type="date" t-att-id="column.name" t-on-change="ev => this.onDateChange(column.name,ev)"/>
+								</t>
+								<t t-elif="component.name === 'BooleanField'">
+									<select t-att-id="column.name" class="filter_searchview_input" t-on-change="ev => this.onBooleanFieldChange(column, ev)">
+										<option value="">-- Select --</option>
+										<option value="true">True</option>
+										<option value="false">False</option>
+									</select>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'boolean'">
+									<select t-att-id="column.name" class="filter_searchview_input" t-on-change="ev => this.onBooleanFieldChange(column, ev)">
+										<option value="">-- Select --</option>
+										<option value="true">True</option>
+										<option value="false">False</option>
+									</select>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'date'">
+									<input type="date" t-att-id="column.name" t-on-change="ev => this.onDateChange(column.name, ev)"/>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'datetime'">
+									<t t-if="env.searchModel.resModel === 'crm.lead'">
+										<div class="accordian_custom o_dropdown_container o_filter_menu w-100 w-lg-auto mb-4 mb-lg-0 border-end">
+											<t t-foreach="filterItems" t-as="item" t-key="item.id">
+												<t t-if="item.fieldName === column.name and item.options">
+													<AccordionItem class="'text-truncate'" description="column.label" selected="item.isActive">
+														<t t-set="subGroup" t-value="null"/>
+														<t t-foreach="item.options" t-as="option" t-key="option.id">
+															<t t-if="subGroup !== null and subGroup !== option.groupNumber">
+																<div class="dropdown-divider" role="separator"/>
+															</t>
+															<CheckboxItem class="{ o_item_option: true, selected: option.isActive }" t-esc="option.description" checked="option.isActive" parentClosingMode="'none'" onSelected="() => this.onFilterSelected({ itemId: item.id, optionId: option.id })"/>
+															<t t-set="subGroup" t-value="option.groupNumber"/></t>
+													</AccordionItem>
+												</t>
+											</t>
+										</div>
+									</t>
+									<t t-else="">
+										<div class="accordian_custom o_dropdown_container o_filter_menu w-100 w-lg-auto mb-4 mb-lg-0 border-end">
+											<t t-foreach="filterItems" t-as="item" t-key="item.id">
+												<t t-if="item.fieldName === column.name and item.options">
+													<AccordionItem class="'text-truncate'" description="column.label" selected="item.isActive">
+														<t t-set="subGroup" t-value="null"/>
+														<t t-foreach="item.options" t-as="option" t-key="option.id">
+															<t t-if="subGroup !== null and subGroup !== option.groupNumber">
+																<div class="dropdown-divider" role="separator"/>
+															</t>
+															<CheckboxItem class="{ o_item_option: true, selected: option.isActive }" t-esc="option.description" checked="option.isActive" parentClosingMode="'none'" onSelected="() => this.onFilterSelected({ itemId: item.id, optionId: option.id })"/>
+															<t t-set="subGroup" t-value="option.groupNumber"/></t>
+													</AccordionItem>
+												</t>
+											</t>
+										</div>
+									</t>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'monetary'">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="number" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'float'">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="number" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+								<t t-else="">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="text" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+							</t>
+						</t>
+					</th>
+				</t>
+			</tr>
+		</xpath>
+	</t>
+	<t t-name="dynamic" id="account_custom_listrenderer" t-inherit="account.ListRenderer" t-inherit-mode="extension" owl="1">
+		<xpath expr="//table/thead" position="inside">
+			<tr>
+				<th/>
+				<t t-foreach="state.columns" t-as="column" t-key="column.id">
+					<t t-set="field" t-value="column.field"/>
+					<th class="filter_view">
+						<t t-if="field">
+							<t t-set="component" t-value="field.component"/>
+							<t t-if="component">
+								<t t-log="component"/>
+								<t t-if="component.name === 'BadgeField'">
+									<select class="o_input" t-att-id="column.name" t-on-change="ev => this.onValueChange(column,ev)">
+										<t t-foreach="options_field" t-as="field" t-key="field_index">
+											<t t-if="field.name === column.name">
+												<t t-foreach="field.selection" t-as="option" t-key="option_index">
+													<option t-att-value="option[0]" t-esc="option[1]"/>
+												</t>
+											</t>
+										</t>
+									</select>
+								</t>
+								<t t-elif="component.name === 'RemainingDaysField'">
+									<input type="date" t-att-id="column.name" t-on-change="ev => this.onDateChange(column.name,ev)"/>
+								</t>
+								<t t-elif="component.name === 'BooleanField'">
+									<select t-att-id="column.name" class="filter_searchview_input" t-on-change="ev => this.onBooleanFieldChange(column, ev)">
+										<option value="">-- Select --</option>
+										<option value="true">True</option>
+										<option value="false">False</option>
+									</select>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'boolean'">
+									<select t-att-id="column.name" class="filter_searchview_input" t-on-change="ev => this.onBooleanFieldChange(column, ev)">
+										<option value="">-- Select --</option>
+										<option value="true">True</option>
+										<option value="false">False</option>
+									</select>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'date'">
+									<input type="date" t-att-id="column.name" t-on-change="ev => this.onDateChange(column.name, ev)"/>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'datetime'">
+									<div class="accordian_custom o_dropdown_container o_filter_menu w-100 w-lg-auto mb-4 mb-lg-0 border-end">
+										<t t-foreach="filterItems" t-as="item" t-key="item.id">
+											<t t-if="item.fieldName === column.name and item.options">
+												<AccordionItem class="'text-truncate'" description="column.label" selected="item.isActive">
+													<t t-set="subGroup" t-value="null"/>
+													<t t-foreach="item.options" t-as="option" t-key="option.id">
+														<t t-if="subGroup !== null and subGroup !== option.groupNumber">
+															<div class="dropdown-divider" role="separator"/>
+														</t>
+														<CheckboxItem class="{ o_item_option: true, selected: option.isActive }" t-esc="option.description" checked="option.isActive" parentClosingMode="'none'" onSelected="() => this.onFilterSelected({ itemId: item.id, optionId: option.id })"/>
+														<t t-set="subGroup" t-value="option.groupNumber"/></t>
+												</AccordionItem>
+											</t>
+										</t>
+									</div>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'monetary'">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="number" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'float'">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="number" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+								<t t-else="">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="text" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+							</t>
+						</t>
+					</th>
+				</t>
+			</tr>
+		</xpath>
+	</t>
+	<t t-name="dynamic" id="purchase_custom_listrenderer" t-inherit="purchase.PurchaseListView" t-inherit-mode="extension" owl="1">
+		<xpath expr="//table/thead" position="inside">
+			<tr>
+				<th/>
+				<t t-foreach="state.columns" t-as="column" t-key="column.id">
+					<t t-set="field" t-value="column.field"/>
+					<t t-set="name" t-value="column.name"/>
+					<th class="filter_view">
+						<t t-if="field">
+							<t t-set="component" t-value="field.component"/>
+							<t t-if="component">
+								<t t-log="component"/>
+								<t t-if="component.name === 'BadgeField'">
+									<select class="o_input" t-on-change="ev => this.onValueChange(column,ev)">
+										<t t-foreach="options_field" t-as="field" t-key="field_index">
+											<t t-if="field.name === column.name">
+												<t t-foreach="field.selection" t-as="option" t-key="option_index">
+													<option t-att-value="option[0]" t-esc="option[1]"/>
+												</t>
+											</t>
+										</t>
+									</select>
+								</t>
+								<t t-elif="component.name === 'RemainingDaysField'">
+									<input type="date" t-att-id="column.name" t-on-change="ev => this.onDateChange(column.name,ev)"/>
+								</t>
+								<t t-elif="component.name === 'BooleanField'">
+									<select t-att-id="column.name" class="filter_searchview_input" t-on-change="ev => this.onBooleanFieldChange(column, ev)">
+										<option value="">-- Select --</option>
+										<option value="true">True</option>
+										<option value="false">False</option>
+									</select>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'boolean'">
+									<select t-att-id="column.name" class="filter_searchview_input" t-on-change="ev => this.onBooleanFieldChange(column, ev)">
+										<option value="">-- Select --</option>
+										<option value="true">True</option>
+										<option value="false">False</option>
+									</select>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'date'">
+									<input type="date" t-att-id="column.name" t-on-change="ev => this.onDateChange(column.name, ev)"/>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'datetime'">
+									<div class="accordian_custom o_dropdown_container o_filter_menu w-100 w-lg-auto mb-4 mb-lg-0 border-end">
+										<t t-foreach="filterItems" t-as="item" t-key="item.id">
+											<t t-if="item.fieldName === column.name and item.options">
+												<AccordionItem class="'text-truncate'" description="column.label" selected="item.isActive">
+													<t t-set="subGroup" t-value="null"/>
+													<t t-foreach="item.options" t-as="option" t-key="option.id">
+														<t t-if="subGroup !== null and subGroup !== option.groupNumber">
+															<div class="dropdown-divider" role="separator"/>
+														</t>
+														<CheckboxItem class="{ o_item_option: true, selected: option.isActive }" t-esc="option.description" checked="option.isActive" parentClosingMode="'none'" onSelected="() => this.onFilterSelected({ itemId: item.id, optionId: option.id })"/>
+														<t t-set="subGroup" t-value="option.groupNumber"/></t>
+												</AccordionItem>
+											</t>
+										</t>
+									</div>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'monetary'">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="number" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+								<t t-elif="field.supportedTypes and field.supportedTypes[0] === 'float'">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="number" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+								<t t-else="">
+									<input t-att-placeholder="column.label" t-att-id="column.name" t-att-name="column.label" class="filter_searchview_input" accesskey="Q" role="searchbox" type="text" t-on-input="onSearchBarInput" t-on-keydown="onSearchBarKeydown"/>
+								</t>
+							</t>
+						</t>
+					</th>
+				</t>
+			</tr>
+		</xpath>
+	</t>
+</templates>

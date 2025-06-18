@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="web.CopyToClipboard">
+        <DropdownItem class="'o_copy_to_clipboard_menu'" onSelected.bind="onCopyToClipboard">
+            <i class="fa fa-fw fa-copy me-1"/>
+            Copy Records
+        </DropdownItem>
+    </t>
+</templates>

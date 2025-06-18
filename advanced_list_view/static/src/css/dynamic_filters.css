@@ -1,0 +1,11 @@
+.o_accordion_values{
+    background-color: #FFF !important;
+}
+
+.accordian_custom .o_accordion .o_accordion_values {
+    position: absolute !important;
+}
+
+.filter_view{
+    z-index: -1;
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="web.ExportCsv">
+        <DropdownItem class="'o_export_csv_menu'" onSelected.bind="onDirectExportCsv">
+            <i class="fa fa-fw fa-upload me-1"/>
+            Export in CSV
+        </DropdownItem>
+    </t>
+</templates>
