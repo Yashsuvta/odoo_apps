@@ -1,0 +1,29 @@
+{
+    'name': "Toggle Developer Mode",
+    'version': '19.0',
+    'category': 'Tools',
+    'author': "CodeFusion OdooWorks",
+    'maintainers': ['yashsuvta1236@gmail.com, nitinupmanyu12@gmail.com'],
+    'website': "https://codefusion-odooworks.odoo.com/",
+    'license': "AGPL-3",
+    'summary': """
+        Effortlessly toggle Odoo debug mode directly from the top-right Navbar. Simplify development and troubleshooting with a single click.""",
+    'description': """
+        This module streamlines Odoo debugging, allowing users to enable or disable debug mode instantly from any view across all devices. Say goodbye to tedious steps—enhance your workflow with a seamless, integrated debug toggle option!
+    """,
+    'depends': [
+        'base', 
+        'web',
+    ],
+    'assets': {
+        'web.assets_backend': [
+            'debug_mode_toggle/static/src/xml/base.xml',
+            'debug_mode_toggle/static/src/css/app.css',
+            'debug_mode_toggle/static/src/js/custom.js',
+            
+        ],
+    },
+    'images': ["static/description/banner.png"],
+    'installable': True,
+    'application': True,
+}
