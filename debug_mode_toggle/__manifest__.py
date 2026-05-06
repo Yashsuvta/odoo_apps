@@ -17,9 +17,9 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'toggle_developer_mode/static/src/css/app.css',
-            'toggle_developer_mode/static/src/js/custom.js',
-            'toggle_developer_mode/static/src/xml/base.xml',
+            'debug_mode_toggle/static/src/css/app.css',
+            'debug_mode_toggle/static/src/js/custom.js',
+            'debug_mode_toggle/static/src/xml/base.xml',
         ],
     },
     'images': ["static/description/banner.png"],
