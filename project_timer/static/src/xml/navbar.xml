@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="web.NavBarCustom"
+       t-inherit="web.NavBar"
+       t-inherit-mode="extension"
+       owl="1">
+
+        <xpath expr="//div[contains(@class, 'o_menu_systray')]"
+               position="before">
+
+            <div t-if="state.hasActiveTimer"
+                 class="d-flex align-items-center o_project_timer_systray">
+
+                <button t-on-click="stopTimer"
+                        title="Stop Task Timer"
+                        class="btn btn-sm btn-danger me-2">
+
+                    <i class="fa fa-stop"/>
+                </button>
+
+            </div>
+
+        </xpath>
+
+    </t>
+
+</templates>
