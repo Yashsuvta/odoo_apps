@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_dynamic_field_config_tree" model="ir.ui.view">
+        <field name="name">dynamic.field.config.tree</field>
+        <field name="model">dynamic.field.config</field>
+        <field name="arch" type="xml">
+
+            <tree>
+                <field name="model_id"/>
+                <field name="field_id"/>
+                <field name="readonly"/>
+                <field name="required"/>
+                <field name="invisible"/>
+                <field name="tracking"/>
+                <field name="active"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="view_dynamic_field_config_form" model="ir.ui.view">
+        <field name="name">dynamic.field.config.form</field>
+        <field name="model">dynamic.field.config</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <sheet>
+
+                    <group>
+
+                        <field name="model_id"/>
+
+                        <field name="field_id"/>
+
+                    </group>
+
+                    <group>
+
+                        <field name="readonly"/>
+
+                        <field name="required"/>
+
+                        <field name="invisible"/>
+
+                        <field name="tracking"/>
+
+                        <field name="active"/>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="action_dynamic_field_config" model="ir.actions.act_window">
+        <field name="name">Dynamic Fields</field>
+        <field name="res_model">dynamic.field.config</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
