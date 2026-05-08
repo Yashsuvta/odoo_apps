@@ -41,7 +41,7 @@ Perfect for:
     'website': 'https://github.com/yashsuvta',
     'category': 'Tools',
     'license': 'LGPL-3',
-    'price': 19.0,
+    'price': 09.0,
     'currency': 'USD',
     'depends': ['base','web','mail',],
     'data': [
