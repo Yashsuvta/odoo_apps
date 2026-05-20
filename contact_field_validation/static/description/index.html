@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Field Validation</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:#f5f7fb;
+            color:#1f2937;
+            line-height:1.6;
+        }
+
+        .container{
+            width:90%;
+            max-width:1200px;
+            margin:auto;
+        }
+
+        .hero{
+            padding:40px 0;
+            text-align:center;
+            background:#ffffff;
+        }
+
+        .hero img{
+            width:100%;
+            border-radius:12px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .section{
+            padding:60px 0;
+        }
+
+        .section-title{
+            text-align:center;
+            font-size:36px;
+            margin-bottom:15px;
+            color:#0f172a;
+        }
+
+        .section-subtitle{
+            text-align:center;
+            color:#64748b;
+            margin-bottom:40px;
+            font-size:18px;
+        }
+
+        .features{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:25px;
+        }
+
+        .feature-card{
+            background:#fff;
+            padding:30px;
+            border-radius:16px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.06);
+            transition:0.3s;
+        }
+
+        .feature-card:hover{
+            transform:translateY(-5px);
+        }
+
+        .feature-card h3{
+            margin-bottom:15px;
+            color:#2563eb;
+            font-size:22px;
+        }
+
+        .feature-card ul{
+            padding-left:18px;
+        }
+
+        .feature-card li{
+            margin-bottom:10px;
+        }
+
+        .supported{
+            background:#ffffff;
+            border-radius:16px;
+            padding:40px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .supported-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+            margin-top:25px;
+        }
+
+        .supported-box{
+            background:#f8fafc;
+            padding:20px;
+            border-radius:12px;
+            border:1px solid #e2e8f0;
+        }
+
+        .supported-box h4{
+            color:#2563eb;
+            margin-bottom:10px;
+        }
+
+        .footer{
+            background:#0f172a;
+            color:#fff;
+            padding:30px 0;
+            text-align:center;
+            margin-top:60px;
+        }
+
+        .footer p{
+            margin:5px 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <img src="banner.png" alt="Contact Field Validation">
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <h2 class="section-title">
+                Contact Field Validation
+            </h2>
+
+            <p class="section-subtitle">
+                Real-time frontend and backend validation for phone and email fields in Odoo 17.
+            </p>
+
+            <div class="features">
+
+                <div class="feature-card">
+                    <h3>Phone Validation</h3>
+
+                    <ul>
+                        <li>Allows only valid phone characters</li>
+                        <li>Blocks alphabets and invalid symbols</li>
+                        <li>Supports +, -, spaces and parentheses</li>
+                        <li>Real-time validation while typing</li>
+                        <li>Automatically cleans pasted values</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Email Validation</h3>
+
+                    <ul>
+                        <li>Validates proper email format</li>
+                        <li>Prevents saving invalid emails</li>
+                        <li>Backend server-side validation</li>
+                        <li>Improves data accuracy</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Dynamic Support</h3>
+
+                    <ul>
+                        <li>Works on notebook pages</li>
+                        <li>Supports dialogs and popups</li>
+                        <li>Supports lazy-loaded forms</li>
+                        <li>Works across all models</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="supported">
+
+                <h2 class="section-title">
+                    Supported Fields
+                </h2>
+
+                <div class="supported-grid">
+
+                    <div class="supported-box">
+                        <h4>Phone Fields</h4>
+
+                        <p>
+                            phone<br>
+                            mobile<br>
+                            work_phone<br>
+                            private_phone<br>
+                            emergency_phone
+                        </p>
+                    </div>
+
+                    <div class="supported-box">
+                        <h4>Supported Models</h4>
+
+                        <p>
+                            res.partner<br>
+                            res.company<br>
+                            hr.employee<br>
+                            custom models
+                        </p>
+                    </div>
+
+                    <div class="supported-box">
+                        <h4>Technology</h4>
+
+                        <p>
+                            OWL Framework<br>
+                            FormRenderer Patch<br>
+                            MutationObserver<br>
+                            Backend Constraints
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p>
+                Developed by <strong>CodeFusion OdooWorks</strong>
+            </p>
+
+            <p>
+                Support: yashsuvta1236@gmail.com
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
